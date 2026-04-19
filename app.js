@@ -1,5 +1,3 @@
-const { findedProduct, successContainer } = require("./details");
-
 let products = [{
         productName: "Wireless Headphones",
         description: "High quality sound with deep bass",
@@ -166,6 +164,7 @@ let cartMainContainer = document.getElementById("cart-main-container")
 let cartOpenIcon = document.getElementById("cart-open-icon")
 let cartCloseIcon = document.getElementById("card-close")
 let cartItemContainer = document.getElementById("cart-item-container")
+let priceText = document.querySelector(".price")
 
 //------------------------------------ Event Lisener-----------------------------
 filterbtns.forEach((item) => {
@@ -338,8 +337,16 @@ function openCartSection(){
         
         `
         cartItemContainer.appendChild(card)
+
         
     })
+    const totalPrice = parsedCartItems.reduce((acc, item)=>{
+        return acc + item.price 
+    }, 0)
+
+
+
+    priceText.textContent = totalPrice
 
 }
 

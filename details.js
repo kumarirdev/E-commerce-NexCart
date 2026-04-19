@@ -1,4 +1,4 @@
-const { addProductsToCart } = require("./app");
+
 
 let products = [{
         productName: "Wireless Headphones",
@@ -180,7 +180,7 @@ addToCartBtn.addEventListener('click', () => {
 
 // finding the product 
 
-export let findedProduct = products.find((item)=>{
+let findedProduct = products.find((item)=>{
     return item.id == productId
 })
 
@@ -198,3 +198,20 @@ subImg3.src = findedProduct.img3
 subImg4.src = findedProduct.img4
 
 
+function addProductsToCart() {
+
+    let cartItems = localStorage.getItem("cart");
+
+    cartItems = cartItems ? JSON.parse(cartItems) : []
+
+    // console.log(cartItems)
+
+    cartItems.push(findedProduct)
+
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+
+    successContainer.classList.remove("hidden")
+    setTimeout(() => {
+        successContainer.classList.add("hidden")
+    }, 2000);
+}
