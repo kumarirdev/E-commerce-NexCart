@@ -350,7 +350,7 @@ function closeCartSection(){
     cartMainContainer.classList.add("hidden")
 }
 //------------------------------------- Function------------------------------------------
-export function addProductsToCart() {
+function addProductsToCart() {
 
     let cartItem = localStorage.getItem('cart');
 
